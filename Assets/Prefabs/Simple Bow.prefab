@@ -97,5 +97,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reloadTime: 1
+  skillCoolDown: 1
   arrowPrefab: {fileID: 1747453541, guid: bc8748ca16a6191438eb811614a10347, type: 3}
   spawnPoint: {fileID: 0}
+  prefab: {fileID: 2742849014566269893, guid: bc8748ca16a6191438eb811614a10347, type: 3}
+  numberOfPrefabs: 10
+  radius: 5
+  speed: 1
+  prefabName: Prefab

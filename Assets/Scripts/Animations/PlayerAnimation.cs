@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using SW.Combat;
 using UnityEngine.UI;
-
+using System;
 namespace SW.Anim
 {
     public class PlayerAnimation : MonoBehaviour
@@ -20,7 +20,7 @@ namespace SW.Anim
         [SerializeField] private float skillCoolDown = 1f;
         
         
-
+        
         private bool canFire = true;
         private bool canUseSkill = true;
         private bool animCheck = false;
@@ -38,7 +38,7 @@ namespace SW.Anim
 
         private void Start()
         {
-            
+            GetComponent<PlayerCombat>().basicAnimAction += AttackAnimation;
         }
 
         
@@ -90,6 +90,7 @@ namespace SW.Anim
                 _anim.SetTrigger("attack");
                 canFire = false;
                 StartCoroutine(ReloadArrow());
+                
             }
         }
 

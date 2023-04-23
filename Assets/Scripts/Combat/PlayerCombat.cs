@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using SW.Anim;
 using SW.Control;
+using System;
 
 namespace SW.Combat
 {
@@ -20,9 +21,9 @@ namespace SW.Combat
     private float timer = Mathf.Infinity;
     
 
-    [SerializeField] public Button basicAttack;
-    [SerializeField] public Button skill1;
-    [SerializeField] public Button skill2;
+    [SerializeField] private Button basicAttack;
+    [SerializeField] private Button skill1;
+    [SerializeField] private Button skill2;
     PlayerAnimation anim;
     public float fireRate = 0.1f;
 
@@ -30,8 +31,8 @@ namespace SW.Combat
     [SerializeField] private float firePower;
     private PlayerController control;
     
-
-
+    public event Action<float> basicAttackAction;
+    public event Action basicAnimAction;
     void Awake()
     {
         anim = GetComponent<PlayerAnimation>();
@@ -61,16 +62,16 @@ namespace SW.Combat
     }
     void BasicAttack()
     {
-        anim.AttackAnimation();
-        weapon.Fire(firePower);
-    }
-
-    void Shoot()
-    {
+        
+        basicAnimAction?.Invoke();
         
     }
 
-    
+    public void Shoot()
+    {
+        basicAttackAction?.Invoke(firePower);
+    }
+
 
     void Skill2()
     {

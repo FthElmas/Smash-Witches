@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 
 
@@ -15,13 +16,17 @@ namespace SW.Combat
     
     [SerializeField]private Transform spawnPoint;
     
-    public float speed = 10f; // Projectile'ın hızı
-    public float fireRate = 0.2f; // Projectile'ın oluşturulma hızı
-    public int numberOfProjectiles = 10; // Oluşturulacak olan projectile sayısı
-    public Arrow projectilePrefab;
-    private float nextFire = 0f;
+    public int numberOfPrefabs = 10; // Oluşturulacak prefab sayısı
+    public float radius = 5f; // Yarıçap
+    public float speed = 1f; // Prefabların oluşma hızı
+    
+
+    private float currentAngle = 0f; // Başlangıç açısı
+    
     private Arrow currentArrow;
-    private Arrow projectile;
+    private Arrow skillArrow;
+    
+    
     
     private bool canFire = true;
     private bool canUseSkill = true;
@@ -34,7 +39,7 @@ namespace SW.Combat
     
     void Start()
     {
-        
+        GetComponent<PlayerCombat>().basicAttackAction += Fire;
     }
 
 
@@ -68,6 +73,7 @@ namespace SW.Combat
 
             
             
+            
 
         }
         
@@ -78,40 +84,42 @@ namespace SW.Combat
     public void SkillBehaviour(float firePower)
     {
 
+       
+        StartCoroutine(CreatePrefabs(firePower));
 
-       if (Time.time > nextFire)
+
+        
+    }
+
+    IEnumerator CreatePrefabs(float firePower)
+    {
+        
+       for (int i = 0; i < numberOfPrefabs; i++)
         {
-            // Bir sonraki projectile'ın ne zaman oluşacağını ayarla
-            nextFire = Time.time + fireRate;
+            
+            skillArrow = Instantiate(arrowPrefab,GetPositionOnCircle(currentAngle), Quaternion.AngleAxis(90f, Vector3.back), spawnPoint);
+            
+            var force = spawnPoint.TransformDirection(Vector3.forward * firePower);
+            
+            skillArrow.Fly(force);
+            skillArrow.transform.parent = null;
+            currentAngle += Mathf.PI / (numberOfPrefabs - 1);
 
-            // Projectile prefab'ından yeni bir nesne oluştur
-            projectile = Instantiate(projectilePrefab, spawnPoint.position, Quaternion.identity);
-
-            // Projectile'ın yönünü ve pozisyonunu karaktere bağlı olarak ayarla
-            float angleStep = 360f / numberOfProjectiles;
-            float angle = 0f;
-
-            for (int i = 0; i < numberOfProjectiles; i++)
-            {
-                // Projectile'ın yönünü hesapla
-                float projectileDirX = transform.position.x + Mathf.Sin((angle * Mathf.PI) / 180f);
-                float projectileDirZ = transform.position.z + Mathf.Cos((angle * Mathf.PI) / 180f);
-
-                // Projectile'ın yönünü ve hızını ayarla
-                Vector3 projectileDirection = new Vector3(projectileDirX, transform.position.y, projectileDirZ) - transform.position;
-                Vector3 projectileVelocity = projectileDirection.normalized * speed;
-
-                // Projectile'ı hareket ettir
-                projectile.GetComponent<Rigidbody>().velocity = projectileVelocity;
-
-                // Bir sonraki projectile'ın yönünü hesapla
-                angle += angleStep;
-            }
+            
+            float waitTime = 1f / speed / (numberOfPrefabs - 1);
+            yield return new WaitForSeconds(waitTime);
         }
         
     }
 
-    
+    private Vector3 GetPositionOnCircle(float angle)
+    {
+        float x = transform.position.x + radius * Mathf.Cos(angle);
+        float y = transform.position.y;
+        float z = transform.position.z + radius * Mathf.Sin(angle);
+        
+        return new Vector3(x, y, z);
+    }
     
 
      

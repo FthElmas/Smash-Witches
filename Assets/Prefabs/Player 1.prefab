@@ -194,7 +194,7 @@ Transform:
   m_GameObject: {fileID: 3927591064509618057}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -5.267, y: -1.418776, z: -11.006}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3927591064509921141}
@@ -289,6 +289,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   basicAttack: {fileID: 0}
+  reloadTime: 2
+  skillCoolDown: 1
 --- !u!114 &3927591065320238250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,6 +318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 100
   speedTurn: 50
+  updateTime: 10
   floatingJoystick: {fileID: 0}
 --- !u!114 &5907303345968926809
 MonoBehaviour:
@@ -332,6 +335,9 @@ MonoBehaviour:
   weapon: {fileID: 3927591065397908605}
   launchDelay: 0.17
   basicAttack: {fileID: 0}
+  skill1: {fileID: 0}
+  skill2: {fileID: 0}
+  fireRate: 0.1
   firePower: 10
 --- !u!1 &3927591064509620227
 GameObject:
@@ -2567,8 +2573,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reloadTime: 1
+  skillCoolDown: 1
   arrowPrefab: {fileID: 1747453541, guid: bc8748ca16a6191438eb811614a10347, type: 3}
   spawnPoint: {fileID: 3927591064293329023}
+  numberOfPrefabs: 10
+  radius: 5
+  speed: 1
 --- !u!4 &3931271795231105261 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4281075886339594, guid: 7f105c0c272e6c146b4b41cdc53ea356, type: 3}
