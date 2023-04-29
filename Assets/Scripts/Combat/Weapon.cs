@@ -97,15 +97,16 @@ namespace SW.Combat
        for (int i = 0; i < numberOfPrefabs; i++)
         {
             
-            skillArrow = Instantiate(arrowPrefab,GetPositionOnCircle(currentAngle), Quaternion.AngleAxis(90f, Vector3.back), spawnPoint);
-            
-            var force = spawnPoint.TransformDirection(Vector3.forward * firePower);
-            
-            skillArrow.Fly(force);
-            skillArrow.transform.parent = null;
-            currentAngle += Mathf.PI / (numberOfPrefabs - 1);
+            GetPositionOnCircle(currentAngle);
 
+            Fire(firePower);
             
+            
+            currentAngle += 18;
+
+            Mathf.Clamp(currentAngle, 0, 180);
+
+            print(currentAngle);
             float waitTime = 1f / speed / (numberOfPrefabs - 1);
             yield return new WaitForSeconds(waitTime);
         }

@@ -64,12 +64,12 @@ namespace SW.Combat
     {
         
         basicAnimAction?.Invoke();
-        
+        weapon.Fire(firePower);
     }
 
     public void Shoot()
     {
-        basicAttackAction?.Invoke(firePower);
+        
     }
 
 
