@@ -13,21 +13,22 @@ namespace SW.Combat
     [SerializeField] private float skillCoolDown = 1f;
 
     [SerializeField]private Arrow arrowPrefab;
+    [SerializeField]private Arrow arrowPrefab2;
     
     [SerializeField]private Transform spawnPoint;
     
-    public int numberOfPrefabs = 10; // Oluşturulacak prefab sayısı
-    public float radius = 5f; // Yarıçap
-    public float speed = 1f; // Prefabların oluşma hızı
     
-
-    private float currentAngle = 0f; // Başlangıç açısı
+    private float waitTime = 0.2f;
+    private Vector3 currentAngle; // Başlangıç açısı
     
     private Arrow currentArrow;
     private Arrow skillArrow;
+    public float radius = 1.0f; // Dairenin yarıçapı
+    public int prefabCount = 5; // Oluşturulacak prefab sayısı
+    public float prefabSpacing = 36.0f; // Prefab nesneleri arasındaki açı farkı
+    public float spawnDelay = 0.2f;
     
-    
-    
+    GameObject player;
     private bool canFire = true;
     private bool canUseSkill = true;
     private string enemyTag;
@@ -39,7 +40,11 @@ namespace SW.Combat
     
     void Start()
     {
-        GetComponent<PlayerCombat>().basicAttackAction += Fire;
+        
+        player = GameObject.FindWithTag("Player");
+
+       
+        
     }
 
 
@@ -84,39 +89,49 @@ namespace SW.Combat
     public void SkillBehaviour(float firePower)
     {
 
-       
-        StartCoroutine(CreatePrefabs(firePower));
-
-
-        
-    }
-
-    IEnumerator CreatePrefabs(float firePower)
-    {
-        
-       for (int i = 0; i < numberOfPrefabs; i++)
+        float angleStep = prefabSpacing;
+        float playerAngle = player.transform.eulerAngles.y;
+        // Prefab nesnelerini oluştur
+        for (int i = 0; i < prefabCount; i++)
         {
-            
-            skillArrow = Instantiate(arrowPrefab,GetPositionOnCircle(currentAngle), Quaternion.AngleAxis(90f, Vector3.back), spawnPoint);
-            
+            // Prefab nesnesinin rotasyon açısını hesapla
+            float angle = playerAngle + i * angleStep;
+            print(angle);
+            // X ve Y koordinatlarını hesapla
+            float x = radius * Mathf.Cos(Mathf.Deg2Rad * angle);
+            float z = radius * Mathf.Sin(Mathf.Deg2Rad * angle);
+
+            // Oluşturulacak prefab nesnesinin konumunu belirle
+            Vector3 spawnPosition =  transform.position  + new Vector3(x, 0, z);
+
+            // Oluşturulacak prefab nesnesinin rotasyonunu belirle
+            Quaternion spawnRotation = Quaternion.Euler(0, angle - playerAngle - 90, 0);
+
+            // Prefab nesnesini oluştur ve spawnDelay kadar bekle
+            skillArrow = Instantiate(arrowPrefab2, spawnPosition, spawnRotation, transform);
             var force = spawnPoint.TransformDirection(Vector3.forward * firePower);
-            
             skillArrow.Fly(force);
             skillArrow.transform.parent = null;
-            currentAngle += Mathf.PI / (numberOfPrefabs - 1);
 
-            
-            float waitTime = 1f / speed / (numberOfPrefabs - 1);
-            yield return new WaitForSeconds(waitTime);
+            if (i < prefabCount - 1)
+                StartCoroutine(WaitForSpawnDelay());
         }
+       
+        
+
         
     }
 
-    private Vector3 GetPositionOnCircle(float angle)
+     IEnumerator WaitForSpawnDelay()
     {
-        float x = transform.position.x + radius * Mathf.Cos(angle);
-        float y = transform.position.y;
-        float z = transform.position.z + radius * Mathf.Sin(angle);
+        yield return new WaitForSeconds(spawnDelay);
+    }
+
+    private Vector3 GetPositionOnCircle(Vector3 angle)
+    {
+        float x = player.transform.rotation.x;
+        float y = player.transform.position.y - 90f;
+        float z = player.transform.position.z;
         
         return new Vector3(x, y, z);
     }
