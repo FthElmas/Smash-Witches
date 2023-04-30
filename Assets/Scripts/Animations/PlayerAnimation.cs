@@ -2,14 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+<<<<<<< Updated upstream
 using SW.Combat;
 using UnityEngine.UI;
 using System;
+=======
+
+>>>>>>> Stashed changes
 namespace SW.Anim
 {
     public class PlayerAnimation : MonoBehaviour
     {
         Animator _anim;
+<<<<<<< Updated upstream
         Rigidbody rigidb;
         NavMeshAgent navMesh;
         FloatingJoystick fJoy;
@@ -25,10 +30,16 @@ namespace SW.Anim
         private bool canUseSkill = true;
         private bool animCheck = false;
         private float _movementSpeed;
+=======
+        
+        NavMeshAgent navMesh;
+        
+>>>>>>> Stashed changes
 
         private void Awake()
         {
             _anim = GetComponent<Animator>();
+<<<<<<< Updated upstream
             rigidb = GetComponent<Rigidbody>();
             navMesh = GetComponent<NavMeshAgent>();
             healthComponent = GetComponent<Health>();
@@ -48,11 +59,20 @@ namespace SW.Anim
             {
                 DeathAnimation();
             }
+=======
+            navMesh = GetComponent<NavMeshAgent>();
+            
+        }
+
+        private void Update()
+        {
+>>>>>>> Stashed changes
             WalkAnimation();
         }
 
         private void WalkAnimation()
         {
+<<<<<<< Updated upstream
             
         _movementSpeed = Input.GetKey(KeyCode.LeftShift) ? 15 : 10;
 
@@ -112,6 +132,13 @@ namespace SW.Anim
         
             animCheck = true;
             _anim.SetTrigger("die");
+=======
+        Vector3 velocity = navMesh.velocity;
+        
+        Vector3 localVelocity = transform.InverseTransformDirection(velocity);
+        float speed = localVelocity.z;
+        _anim.SetFloat("forwardSpeed", speed);
+>>>>>>> Stashed changes
         }
     }
 
