@@ -112,6 +112,7 @@ m_ResolvedPackages:
     - 2.9.5
     - 3.0.0-pre.3
     - 3.0.0-pre.4
+    - 3.0.0-pre.5
     compatible:
     - 2.8.9
     - 2.9.0-pre.1
@@ -261,16 +262,18 @@ m_ResolvedPackages:
     - 2.0.0
     - 2.0.1
     - 2.0.3
+    - 2.0.4
     - 2.1.0-preview.3
     - 2.1.0-preview.5
     - 2.1.0-preview.6
     compatible:
     - 2.0.1
     - 2.0.3
+    - 2.0.4
     - 2.1.0-preview.3
     - 2.1.0-preview.5
     - 2.1.0-preview.6
-    verified: 2.0.3
+    verified: 2.0.4
   dependencies: []
   resolvedDependencies: []
   keywords:
@@ -1109,6 +1112,7 @@ m_ResolvedPackages:
     - 1.6.2
     - 1.6.3
     - 1.6.4
+    - 1.6.5
     - 1.7.0-pre.1
     - 1.7.0-pre.2
     - 1.7.0
@@ -1121,6 +1125,7 @@ m_ResolvedPackages:
     - 1.8.2
     compatible:
     - 1.6.4
+    - 1.6.5
     - 1.7.0-pre.1
     - 1.7.0-pre.2
     - 1.7.0
@@ -1131,7 +1136,7 @@ m_ResolvedPackages:
     - 1.8.0
     - 1.8.1
     - 1.8.2
-    verified: 1.6.4
+    verified: 1.6.5
   dependencies:
   - name: com.unity.modules.director
     version: 1.0.0
@@ -1201,6 +1206,7 @@ m_ResolvedPackages:
   versions:
     all:
     - 1.0.0
+    - 3.0.0-exp.1
     compatible:
     - 1.0.0
     verified: 1.0.0

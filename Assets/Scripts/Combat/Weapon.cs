@@ -12,8 +12,8 @@ namespace SW.Combat
     [SerializeField] private float reloadTime = 2f;
     [SerializeField] private float skillCoolDown = 1f;
 
-    [SerializeField]private Arrow arrowPrefab;
-    [SerializeField]private Arrow arrowPrefab2;
+    [SerializeField]private Projectile arrowPrefab;
+    [SerializeField]private Projectile arrowPrefab2;
     
     [SerializeField]private Transform spawnPoint;
     
@@ -21,8 +21,8 @@ namespace SW.Combat
     private float waitTime = 0.2f;
     private Vector3 currentAngle; // Başlangıç açısı
     
-    private Arrow currentArrow;
-    private Arrow skillArrow;
+    private Projectile currentArrow;
+    private Projectile skillArrow;
     public float radius = 1.0f; // Dairenin yarıçapı
     public int prefabCount = 5; // Oluşturulacak prefab sayısı
     public float prefabSpacing = 36.0f; // Prefab nesneleri arasındaki açı farkı
@@ -70,6 +70,7 @@ namespace SW.Combat
         {
             currentArrow = Instantiate(arrowPrefab, spawnPoint);
             var force = spawnPoint.TransformDirection(Vector3.forward * firePower);
+            
 
             currentArrow.Fly(force);
 

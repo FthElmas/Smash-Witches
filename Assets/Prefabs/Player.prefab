@@ -538,7 +538,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8787597024734771150}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2607,10 +2607,12 @@ MonoBehaviour:
   reloadTime: 2
   skillCoolDown: 1
   arrowPrefab: {fileID: 1747453541, guid: bc8748ca16a6191438eb811614a10347, type: 3}
+  arrowPrefab2: {fileID: -2242105451105493351, guid: 3275ee35d9aa04f4db878b1ce3cc6bec, type: 3}
   spawnPoint: {fileID: 8787597024954628508}
-  numberOfPrefabs: 5
-  radius: 5
-  speed: 1
+  radius: 2
+  prefabCount: 5
+  prefabSpacing: 36
+  spawnDelay: 0.2
 --- !u!4 &8790152852820709646 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4281075886339594, guid: 7f105c0c272e6c146b4b41cdc53ea356, type: 3}

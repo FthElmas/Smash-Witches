@@ -41,7 +41,7 @@
      <Compile Include="Assets\Game\Asset Packs\Joystick Pack\Scripts\Joysticks\FixedJoystick.cs" />
      <Compile Include="Assets\Game\Asset Packs\Joystick Pack\Scripts\Joysticks\VariableJoystick.cs" />
      <Compile Include="Assets\Game\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
-     <Compile Include="Assets\Scripts\Combat\Arrow.cs" />
+     <Compile Include="Assets\Scripts\Combat\Projectile.cs" />
      <Compile Include="Assets\Game\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
      <Compile Include="Assets\Game\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
      <Compile Include="Assets\Game\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
@@ -92,12 +92,15 @@
      <Compile Include="Assets\Scripts\Controllers\AIController.cs" />
      <Compile Include="Assets\Game\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
      <Compile Include="Assets\Game\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
+     <Compile Include="Assets\Scripts\Core\MainMenu.cs" />
      <None Include="Assets\Game\Asset Packs\Synty - Polygon Student Sample\README - Usage Rights for these assets.txt" />
      <None Include="Assets\Game\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\Game\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
+     <None Include="Assets\Game\FireIceProjectileExplosion\Shader\S_ParticleAdd.shader" />
      <None Include="Assets\Game\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
      <None Include="Assets\Game\TextMesh Pro\Examples &amp; Extras\Fonts\Oswald-Bold - OFL.txt" />
      <None Include="Assets\Game\TextMesh Pro\Examples &amp; Extras\Fonts\Anton OFL.txt" />
+     <None Include="Assets\Game\WizardPolyArt\Shader\PolyArtMaskTint.shader" />
      <None Include="Assets\Game\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
      <None Include="Assets\Game\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
      <None Include="Assets\Game\Asset Packs\Animations by Explosive\README - Usage Rights for these assets 1.txt" />
@@ -115,6 +118,7 @@
      <None Include="Assets\Game\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
      <None Include="Assets\Game\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
      <None Include="Assets\Game\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+     <None Include="Assets\Game\WizardPolyArt\SRP\HowToTestSRPs.txt" />
      <None Include="Assets\Game\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
      <None Include="Assets\Game\TextMesh Pro\Shaders\TMP_Sprite.shader" />
      <None Include="Assets\Game\TextMesh Pro\Examples &amp; Extras\Fonts\Bangers - OFL.txt" />
