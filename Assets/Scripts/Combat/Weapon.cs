@@ -13,18 +13,17 @@ namespace SW.Combat
     [SerializeField] private float skillCoolDown = 1f;
 
     [SerializeField]private Projectile arrowPrefab;
-    [SerializeField]private Projectile arrowPrefab2;
+    
     
     [SerializeField]private Transform spawnPoint;
     
     
-    private float waitTime = 0.2f;
-    private Vector3 currentAngle; // Başlangıç açısı
+    
     
     private Projectile currentArrow;
     private Projectile skillArrow;
-    public float radius = 1.0f; // Dairenin yarıçapı
-    public int prefabCount = 5; // Oluşturulacak prefab sayısı
+    public float radius = 5.0f; // Dairenin yarıçapı
+    public int prefabCount = 10; // Oluşturulacak prefab sayısı
     public float prefabSpacing = 36.0f; // Prefab nesneleri arasındaki açı farkı
     public float spawnDelay = 0.2f;
     
@@ -95,27 +94,26 @@ namespace SW.Combat
         // Prefab nesnelerini oluştur
         for (int i = 0; i < prefabCount; i++)
         {
-            // Prefab nesnesinin rotasyon açısını hesapla
+            
             float angle = playerAngle + i * angleStep;
             
-            // X ve Y koordinatlarını hesapla
+            
             float x = radius * Mathf.Cos(Mathf.Deg2Rad * angle);
             float z = radius * Mathf.Sin(Mathf.Deg2Rad * angle);
 
-            // Oluşturulacak prefab nesnesinin konumunu belirle
-            Vector3 spawnPosition =  transform.position  + new Vector3(x, 0, z);
+            
+            Vector3 spawnPosition =  spawnPoint.transform.position  + new Vector3(x, 0, z);
 
-            // Oluşturulacak prefab nesnesinin rotasyonunu belirle
-            Quaternion spawnRotation = Quaternion.Euler(0, angle - playerAngle - 90, 0);
+            
+            Quaternion spawnRotation = spawnPoint.transform.rotation;
 
-            // Prefab nesnesini oluştur ve spawnDelay kadar bekle
-            skillArrow = Instantiate(arrowPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation, spawnPoint.transform);
+            
+            skillArrow = Instantiate(arrowPrefab, spawnPosition, spawnRotation);
             var force = spawnPoint.transform.forward * firePower;
             skillArrow.Fly(force);
             skillArrow.transform.parent = null;
 
-            if (i < prefabCount - 1)
-                StartCoroutine(WaitForSpawnDelay());
+            
         }
        
         

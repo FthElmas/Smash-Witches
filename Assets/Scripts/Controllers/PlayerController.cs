@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using SW.Combat;
 
 namespace SW.Control
 {
@@ -11,10 +12,10 @@ namespace SW.Control
         [SerializeField]private float speedTurn;
         [SerializeField] private float updateTime = 10f;
         [SerializeField]private GameObject powerUpPrefab;
-        
+        PlayerController control;
         GameObject player;
         NavMeshAgent navMesh;
-
+        Health health;
         Rigidbody rb;
         
         public FloatingJoystick floatingJoystick;
@@ -26,6 +27,7 @@ namespace SW.Control
             navMesh = GetComponent<NavMeshAgent>();
             player = GameObject.FindWithTag("Player");
         }
+        
         public IEnumerator UpdateSpeed()
         {
             speed = 6f;
@@ -41,7 +43,7 @@ namespace SW.Control
 
             GameObject particle = Instantiate(powerUpPrefab, player.transform.position, player.transform.rotation, player.transform);
 
-            Destroy(particle, 1f);
+            Destroy(particle, 10f);
             
         }
 
@@ -55,7 +57,9 @@ namespace SW.Control
             else if(Input.GetButtonUp("Fire1"))
             {
                 rb.velocity = Vector3.zero;
-            }  
+            } 
+
+            DisableMovementOnDeath(); 
         }
 
         private void JoystickBehaviour()
@@ -78,6 +82,18 @@ namespace SW.Control
 
             
             
+        }
+
+        private void DisableMovementOnDeath()
+        {
+            health = player.GetComponent<Health>();
+            if(health.isDead())
+            {
+                control = player.GetComponent<PlayerController>();
+                control.enabled = false;
+                player.GetComponent<Rigidbody>().velocity = Vector3.zero;
+
+            }
         }
 
         

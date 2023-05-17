@@ -808,6 +808,14 @@
       <Project>{6b2524fe-a6d6-1de4-0eb3-31e766371ef2}</Project>
       <Name>Assembly-CSharp</Name>
     </ProjectReference>
+    <ProjectReference Include="CodeMonkey_HealthSystem.csproj">
+      <Project>{cf066178-aed7-5ddd-d7f8-d88c6dc3c316}</Project>
+      <Name>CodeMonkey_HealthSystem</Name>
+    </ProjectReference>
+    <ProjectReference Include="CodeMonkey_HealthSystem_Editor.csproj">
+      <Project>{3128088e-83b9-5af2-93be-35599b17488d}</Project>
+      <Name>CodeMonkey_HealthSystem_Editor</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

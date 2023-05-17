@@ -43,10 +43,12 @@
      <Compile Include="Assets\Game\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
      <Compile Include="Assets\Scripts\Combat\Projectile.cs" />
      <Compile Include="Assets\Game\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
+     <Compile Include="Assets\Scripts\Scene\GameOver.cs" />
      <Compile Include="Assets\Game\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
      <Compile Include="Assets\Game\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
      <Compile Include="Assets\Scripts\Animations\PlayerAnimation.cs" />
      <Compile Include="Assets\Scripts\Combat\Health.cs" />
+     <Compile Include="Assets\Game\PowerUp\Scripts\PowerUpManager.cs" />
      <Compile Include="Assets\Game\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
      <Compile Include="Assets\Game\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
      <Compile Include="Assets\Scripts\Core\MoveAction.cs" />
@@ -68,6 +70,7 @@
      <Compile Include="Assets\Game\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
      <Compile Include="Assets\Game\Asset Packs\Joystick Pack\Scripts\Base\Joystick.cs" />
      <Compile Include="Assets\Scripts\Core\CameraFollow.cs" />
+     <Compile Include="Assets\Game\PowerUp\Scripts\TakeablePowerUp.cs" />
      <Compile Include="Assets\Game\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
      <Compile Include="Assets\Game\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
      <Compile Include="Assets\Scripts\Controllers\PlayerController.cs" />
@@ -78,14 +81,18 @@
      <Compile Include="Assets\Game\Asset Packs\Joystick Pack\Examples\JoystickSetterExample.cs" />
      <Compile Include="Assets\Scripts\Animations\EnemyAnimation.cs" />
      <Compile Include="Assets\Game\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
+     <Compile Include="Assets\Game\PowerUp\Scripts\CustomizablePowerUp.cs" />
      <Compile Include="Assets\Scripts\Combat\Attacker.cs" />
+     <Compile Include="Assets\Game\PowerUp\Scripts\Utility\Singleton.cs" />
      <Compile Include="Assets\Game\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
      <Compile Include="Assets\Game\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
      <Compile Include="Assets\Scripts\Combat\PlayerCombat.cs" />
      <Compile Include="Assets\Scripts\Core\IAction.cs" />
      <Compile Include="Assets\Game\Asset Packs\Joystick Pack\Scripts\Joysticks\FloatingJoystick.cs" />
+     <Compile Include="Assets\Game\PowerUp\Scripts\PowerUpRotation.cs" />
+     <Compile Include="Assets\Scripts\Core\GameManager.cs" />
      <Compile Include="Assets\Game\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
-     <Compile Include="Assets\Scripts\Core\MainMenu.cs" />
+     <Compile Include="Assets\Scripts\Scene\MainMenu.cs" />
      <Compile Include="Assets\Scripts\Core\IAttack.cs" />
      <Compile Include="Assets\Game\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
      <Compile Include="Assets\Game\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
@@ -93,15 +100,9 @@
      <Compile Include="Assets\Game\TextMesh Pro\Examples &amp; Extras\Scripts\TeleType.cs" />
      <Compile Include="Assets\Scripts\Controllers\AIController.cs" />
      <Compile Include="Assets\Game\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
+     <Compile Include="Assets\Game\PowerUp\Scripts\ScaleParticles.cs" />
      <Compile Include="Assets\Game\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
-     <Compile Include="Assets\Scripts\Core\GameManager.cs" />
-     <Compile Include="Assets\Scripts\Core\GameOver.cs" />
-     <Compile Include="Assets\PowerUp\Scripts\TakeablePowerUp.cs" />
-     <Compile Include="Assets\PowerUp\Scripts\Utility\Singleton.cs" />
-     <Compile Include="Assets\PowerUp\Scripts\PowerUpManager.cs" />
-     <Compile Include="Assets\PowerUp\Scripts\CustomizablePowerUp.cs" />
-     <Compile Include="Assets\PowerUp\Scripts\PowerUpRotation.cs" />
-     <Compile Include="Assets\PowerUp\Scripts\ScaleParticles.cs" />
+     <Compile Include="Assets\Scripts\UI\HealthBarUI.cs" />
      <None Include="Assets\Game\Asset Packs\Synty - Polygon Student Sample\README - Usage Rights for these assets.txt" />
      <None Include="Assets\Game\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\Game\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
@@ -832,6 +833,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="CodeMonkey_HealthSystem.csproj">
+      <Project>{cf066178-aed7-5ddd-d7f8-d88c6dc3c316}</Project>
+      <Name>CodeMonkey_HealthSystem</Name>
+    </ProjectReference>
+    <ProjectReference Include="CodeMonkey_HealthSystem_Editor.csproj">
+      <Project>{3128088e-83b9-5af2-93be-35599b17488d}</Project>
+      <Name>CodeMonkey_HealthSystem_Editor</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
