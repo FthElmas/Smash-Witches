@@ -54,13 +54,18 @@ namespace SW.Core
             if (!pooledObjects[i].activeInHierarchy)
             {
                 pooledObjects[i].SetActive(true);
-                pooledObjects[i].transform.position = new Vector3(Random.Range(-10f, 10f), 0f, Random.Range(0, -20f)); // Rastgele pozisyon belirleme
+                pooledObjects[i].transform.position = new Vector3(Random.Range(-10f, 30f), 0f, Random.Range(-15f, 30f)); // Rastgele pozisyon belirleme
                 return;
                 
             }
 
             
         }
+    }
+
+    public int SpawnedObjectsNumber()
+    {
+        return pooledObjects.Count;
     }
 
     

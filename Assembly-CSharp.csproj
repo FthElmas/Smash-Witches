@@ -73,6 +73,7 @@
      <Compile Include="Assets\Scripts\Controllers\PlayerController.cs" />
      <Compile Include="Assets\Game\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
      <Compile Include="Assets\Game\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
+     <Compile Include="Assets\Scripts\Controllers\SpikeController.cs" />
      <Compile Include="Assets\Game\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
      <Compile Include="Assets\Game\Asset Packs\Joystick Pack\Examples\JoystickSetterExample.cs" />
      <Compile Include="Assets\Scripts\Animations\EnemyAnimation.cs" />
@@ -84,6 +85,7 @@
      <Compile Include="Assets\Scripts\Core\IAction.cs" />
      <Compile Include="Assets\Game\Asset Packs\Joystick Pack\Scripts\Joysticks\FloatingJoystick.cs" />
      <Compile Include="Assets\Game\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
+     <Compile Include="Assets\Scripts\Core\MainMenu.cs" />
      <Compile Include="Assets\Scripts\Core\IAttack.cs" />
      <Compile Include="Assets\Game\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
      <Compile Include="Assets\Game\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
@@ -92,7 +94,14 @@
      <Compile Include="Assets\Scripts\Controllers\AIController.cs" />
      <Compile Include="Assets\Game\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
      <Compile Include="Assets\Game\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
-     <Compile Include="Assets\Scripts\Core\MainMenu.cs" />
+     <Compile Include="Assets\Scripts\Core\GameManager.cs" />
+     <Compile Include="Assets\Scripts\Core\GameOver.cs" />
+     <Compile Include="Assets\PowerUp\Scripts\TakeablePowerUp.cs" />
+     <Compile Include="Assets\PowerUp\Scripts\Utility\Singleton.cs" />
+     <Compile Include="Assets\PowerUp\Scripts\PowerUpManager.cs" />
+     <Compile Include="Assets\PowerUp\Scripts\CustomizablePowerUp.cs" />
+     <Compile Include="Assets\PowerUp\Scripts\PowerUpRotation.cs" />
+     <Compile Include="Assets\PowerUp\Scripts\ScaleParticles.cs" />
      <None Include="Assets\Game\Asset Packs\Synty - Polygon Student Sample\README - Usage Rights for these assets.txt" />
      <None Include="Assets\Game\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\Game\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />

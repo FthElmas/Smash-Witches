@@ -51,13 +51,11 @@ public class Projectile : MonoBehaviour
             {
                 health.DamageIntake(damage);
             }
-            GameObject explosion = Instantiate(explosionPrefab, gameObject.transform);
-            Destroy(gameObject);
-            Destroy(explosion, 1);
-
 
         }
-        Destroy(gameObject, destroyDelay);
+        Destroy(gameObject);
+        GameObject explosion = Instantiate(explosionPrefab, collision.contacts[0].point, Quaternion.identity);
+        Destroy(explosion, 1);
         rigidBody.velocity = Vector3.zero;
 
     }

@@ -10,8 +10,9 @@ namespace SW.Control
         [SerializeField]private float speed = 10f;
         [SerializeField]private float speedTurn;
         [SerializeField] private float updateTime = 10f;
+        [SerializeField]private GameObject powerUpPrefab;
         
-        
+        GameObject player;
         NavMeshAgent navMesh;
 
         Rigidbody rb;
@@ -23,6 +24,7 @@ namespace SW.Control
         {
             rb = GetComponent<Rigidbody>();
             navMesh = GetComponent<NavMeshAgent>();
+            player = GameObject.FindWithTag("Player");
         }
         public IEnumerator UpdateSpeed()
         {
@@ -36,7 +38,14 @@ namespace SW.Control
         public void SpeedCoroutine()
         {
             StartCoroutine(UpdateSpeed());
+
+            GameObject particle = Instantiate(powerUpPrefab, player.transform.position, player.transform.rotation, player.transform);
+
+            Destroy(particle, 1f);
+            
         }
+
+        
         private void Update()
         {
             if (Input.GetButton("Fire1"))

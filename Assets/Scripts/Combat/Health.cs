@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using SW.Core;
+using SW.Control;
 
 
 namespace SW.Combat
@@ -14,6 +15,8 @@ namespace SW.Combat
         private void Awake()
         {
             scheduler = GetComponent<PlayerScheduler>();
+            
+            
         }
         public void DamageIntake(float damage)
         {

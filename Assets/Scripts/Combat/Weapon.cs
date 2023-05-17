@@ -68,8 +68,8 @@ namespace SW.Combat
     {
         if(canFire)
         {
-            currentArrow = Instantiate(arrowPrefab, spawnPoint);
-            var force = spawnPoint.TransformDirection(Vector3.forward * firePower);
+            currentArrow = Instantiate(arrowPrefab, spawnPoint.position, spawnPoint.rotation);
+            var force = spawnPoint.transform.forward * firePower;
             
 
             currentArrow.Fly(force);
@@ -97,7 +97,7 @@ namespace SW.Combat
         {
             // Prefab nesnesinin rotasyon açısını hesapla
             float angle = playerAngle + i * angleStep;
-            print(angle);
+            
             // X ve Y koordinatlarını hesapla
             float x = radius * Mathf.Cos(Mathf.Deg2Rad * angle);
             float z = radius * Mathf.Sin(Mathf.Deg2Rad * angle);
@@ -109,8 +109,8 @@ namespace SW.Combat
             Quaternion spawnRotation = Quaternion.Euler(0, angle - playerAngle - 90, 0);
 
             // Prefab nesnesini oluştur ve spawnDelay kadar bekle
-            skillArrow = Instantiate(arrowPrefab2, spawnPosition, spawnRotation, transform);
-            var force = spawnPoint.TransformDirection(Vector3.forward * firePower);
+            skillArrow = Instantiate(arrowPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation, spawnPoint.transform);
+            var force = spawnPoint.transform.forward * firePower;
             skillArrow.Fly(force);
             skillArrow.transform.parent = null;
 
