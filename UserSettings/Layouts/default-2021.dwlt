@@ -75,7 +75,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 44
+  controlID: 97
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -130,7 +130,7 @@ MonoBehaviour:
   - {fileID: 15}
   - {fileID: 14}
   m_Selected: 0
-  m_LastSelected: 1
+  m_LastSelected: 2
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -226,7 +226,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 45
+  controlID: 44
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -251,7 +251,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 46
+  controlID: 45
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -432,7 +432,7 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: -356748
+  m_LastSelectedObjectID: 24120
 --- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -454,9 +454,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 528
+    y: 583.2
     width: 1164.6
-    height: 255.4
+    height: 200.19998
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -473,14 +473,14 @@ MonoBehaviour:
     - {fileID: -3872061540112128679, guid: 667682cc6db209545b5684d5606f47b4, type: 2}
     - {fileID: 1107364442111729044, guid: 713b772b1d0f74133a8ce94956352a48, type: 2}
     m_ValueSerializationHelper:
-    - e00: 0.7692632
+    - e00: 0.8768271
       e01: 0
       e02: 0
-      e03: -23.463135
+      e03: -207.69766
       e10: 0
-      e11: 0.7692632
+      e11: 0.8768271
       e12: 0
-      e13: 16.08841
+      e13: -111.74638
       e20: 0
       e21: 0
       e22: 1
@@ -659,22 +659,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Prefabs
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Prefabs
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Fatih\Smash Witches
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 52640000
-    m_LastClickedID: 25682
-    m_ExpandedIDs: 0000000056630000586300005a6300005c630000626300003e380100463801004a3801009e460100
+    scrollPos: {x: 0, y: 179.80002}
+    m_SelectedIDs: fc640000
+    m_LastClickedID: 25852
+    m_ExpandedIDs: 00000000986400009a6400009c6400009e640000a0640000a2640000a4640000a6640000a8640000aa640000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -702,7 +702,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000056630000586300005a6300005c6300005e6300006063000062630000
+    m_ExpandedIDs: 00000000986400009a6400009c6400009e640000a0640000a2640000a4640000a6640000a8640000aa640000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -834,21 +834,21 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 4678f9ff748efaffc48ffaff06e8ffffb2f9ffffb2faffff14fbffffb05d0000f45d0000185e00009ea80100b8a80100
+      m_ExpandedIDs: 14fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: QuitButton
-        m_OriginalName: QuitButton
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 108600
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 4}
       m_SearchString: 
@@ -1112,14 +1112,14 @@ MonoBehaviour:
   m_OverrideSceneCullingMask: 6917529027641081856
   m_SceneIsLit: 1
   m_SceneLighting: 1
-  m_2DMode: 1
+  m_2DMode: 0
   m_isRotationLocked: 0
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 519.5, y: 137.25, z: 0}
+    m_Target: {x: 6.957453, y: 4.8840194, z: 4.83339}
     speed: 2
-    m_Value: {x: 519.5, y: 137.25, z: 0}
+    m_Value: {x: 6.957453, y: 4.8840194, z: 4.83339}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 3
@@ -1148,17 +1148,17 @@ MonoBehaviour:
       m_Size: {x: 1, y: 1}
     yGrid:
       m_Fade:
-        m_Target: 0
+        m_Target: 1
         speed: 2
-        m_Value: 0
+        m_Value: 1
       m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 0.4}
       m_Pivot: {x: 0, y: 0, z: 0}
       m_Size: {x: 1, y: 1}
     zGrid:
       m_Fade:
-        m_Target: 1
+        m_Target: 0
         speed: 2
-        m_Value: 1
+        m_Value: 0
       m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 0.4}
       m_Pivot: {x: 0, y: 0, z: 0}
       m_Size: {x: 1, y: 1}
@@ -1166,17 +1166,17 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0, y: 0, z: 0, w: 1}
+    m_Target: {x: -0.17579055, y: -0.7959774, z: 0.27425995, w: -0.51022995}
     speed: 2
-    m_Value: {x: -0, y: 0, z: -0, w: -1}
+    m_Value: {x: -0.17578742, y: -0.7959633, z: 0.2742551, w: -0.5102209}
   m_Size:
-    m_Target: 157.21698
+    m_Target: 1.784261
     speed: 2
-    m_Value: 157.21698
+    m_Value: 1.784261
   m_Ortho:
-    m_Target: 1
+    m_Target: 0
     speed: 2
-    m_Value: 1
+    m_Value: 0
   m_CameraSettings:
     m_Speed: 1.8200902
     m_SpeedNormalized: 0.9100001
@@ -1190,7 +1190,7 @@ MonoBehaviour:
     m_FarClip: 10000
     m_DynamicClip: 1
     m_OcclusionCulling: 0
-  m_LastSceneViewRotation: {x: -0.09566082, y: 0.48465297, z: -0.054165035, w: -0.8683968}
+  m_LastSceneViewRotation: {x: 0.34669584, y: -0.3257082, z: 0.12978657, w: 0.8700003}
   m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 

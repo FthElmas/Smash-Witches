@@ -420,6 +420,7 @@
 "Assets/Scripts/Core/PlayerScheduler.cs"
 "Assets/Scripts/Scene/GameOver.cs"
 "Assets/Scripts/Scene/MainMenu.cs"
+"Assets/Scripts/Shop/Coin.cs"
 "Assets/Scripts/UI/HealthBarUI.cs"
 -langversion:9.0
 

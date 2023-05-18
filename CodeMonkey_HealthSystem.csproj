@@ -36,11 +36,11 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Game\CodeMonkey\HealthSystem\_Readme\Readme_HealthSystem.cs" />
      <Compile Include="Assets\Game\CodeMonkey\HealthSystem\Scripts\HealthBarUI.cs" />
+     <Compile Include="Assets\Game\CodeMonkey\HealthSystem\Scripts\HealthSystem.cs" />
      <Compile Include="Assets\Game\CodeMonkey\HealthSystem\Scripts\IGetHealthSystem.cs" />
      <Compile Include="Assets\Game\CodeMonkey\HealthSystem\Scripts\LookAtCamera.cs" />
-     <Compile Include="Assets\Game\CodeMonkey\HealthSystem\_Readme\Readme_HealthSystem.cs" />
-     <Compile Include="Assets\Game\CodeMonkey\HealthSystem\Scripts\HealthSystem.cs" />
      <Compile Include="Assets\Game\CodeMonkey\HealthSystem\Scripts\HealthSystemComponent.cs" />
      <None Include="Assets\Game\CodeMonkey\HealthSystem\README.txt" />
      <None Include="Assets\Game\CodeMonkey\HealthSystem\CodeMonkey_HealthSystem.asmdef" />

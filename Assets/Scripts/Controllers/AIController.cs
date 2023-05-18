@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using SW.Anim;
-using SW.Core;
 using SW.Combat;
+using System;
 
 
 namespace SW.Control
@@ -12,19 +11,19 @@ namespace SW.Control
     {
         [SerializeField]private float chaseDistance;
         [SerializeField] private float deathTime = 2f;
-
+        public Action<GameObject> attackBehaviour;
         GameObject player;
         Health target;
-        EnemyAnimation _anim;
         Attacker  fighter;
-        MoveAction mover;
-        PlayerScheduler aiAction;
+        
+        
+        
 
         private void Awake()
         {
             player = GameObject.FindWithTag("Player");
             fighter = GetComponent<Attacker>();
-            _anim = GetComponent<EnemyAnimation>();
+            
             target = GetComponent<Health>();
         }
 
@@ -43,9 +42,7 @@ namespace SW.Control
 
         private void AttackBehaviour()
         {
-            fighter.Attack(player);
-            _anim.Attack(player);
-            
+            attackBehaviour?.Invoke(player);
         }
         
 

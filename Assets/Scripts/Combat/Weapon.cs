@@ -30,18 +30,13 @@ namespace SW.Combat
     GameObject player;
     private bool canFire = true;
     private bool canUseSkill = true;
-    private string enemyTag;
-
-    public void SetEnemyTag(string enemyTag)
-    {
-        this.enemyTag = enemyTag;
-    }
+    
     
     void Start()
     {
         
         player = GameObject.FindWithTag("Player");
-
+        player.GetComponent<PlayerCombat>().basicAttackAction += Fire;
        
         
     }
@@ -65,23 +60,15 @@ namespace SW.Combat
     
     public void Fire(float firePower)
     {
-        if(canFire)
-        {
-            currentArrow = Instantiate(arrowPrefab, spawnPoint.position, spawnPoint.rotation);
-            var force = spawnPoint.transform.forward * firePower;
-            
-
-            currentArrow.Fly(force);
-
-            canFire = false;
-            StartCoroutine(ReloadArrow());
-
-            
-            
-            
-
-        }
         
+        currentArrow = Instantiate(arrowPrefab, spawnPoint.position, spawnPoint.rotation);
+        var force = spawnPoint.transform.forward * firePower;
+            
+
+        currentArrow.Fly(force);
+
+            
+
         currentArrow.transform.parent = null;
     }
     

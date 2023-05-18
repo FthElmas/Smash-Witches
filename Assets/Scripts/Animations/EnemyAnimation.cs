@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using SW.Combat;
 using UnityEngine.AI;
+using SW.Control;
 
 namespace SW.Anim
 {
@@ -29,7 +30,7 @@ namespace SW.Anim
             rigidb = GetComponent<Rigidbody>();
             navMesh = GetComponent<NavMeshAgent>();
             healthComponent = GetComponent<Health>();
-            
+            GetComponent<AIController>().attackBehaviour += Attack;
             
         }
 

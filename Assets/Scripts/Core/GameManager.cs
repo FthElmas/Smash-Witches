@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using SW.Combat;
+using UnityEngine.UI;
+
 
 
 namespace SW.Core
@@ -10,13 +12,18 @@ namespace SW.Core
     public class GameManager : MonoBehaviour
     {
         Health health;
-        ObjectPooler objectPool;
+        GameObject poolObject;
         GameObject player;
+        ObjectPooler enemyPool;
+        [SerializeField]private TMPro.TextMeshProUGUI roundNumberText;
+        private int roundNumber = 1;
 
         private void Awake()
         {
             player = GameObject.FindWithTag("Player");
             health = player.GetComponent<Health>();
+            poolObject = GameObject.FindWithTag("EnemyPool");
+            enemyPool = poolObject.GetComponent<ObjectPooler>();
         }
         private void Update()
         {
@@ -25,6 +32,9 @@ namespace SW.Core
             {
                 StartCoroutine(LoadingGameOver());
             }
+
+            Round();
+            
         }
 
         IEnumerator LoadingGameOver()
@@ -32,6 +42,19 @@ namespace SW.Core
             yield return new WaitForSeconds(2f);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
+
+        private void Round()
+        {
+            
+            if(enemyPool.AreEnemiesDead())
+            {
+                roundNumberText.text = roundNumber.ToString();
+                roundNumber++;
+                SceneManager.LoadScene(1);
+            }
+            
+        }
+
     }
 
 }

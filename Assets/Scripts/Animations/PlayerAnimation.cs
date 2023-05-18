@@ -17,12 +17,12 @@ namespace SW.Anim
         [SerializeField] private Button basicAttack;
         Health target;
         [SerializeField] private float reloadTime = 2f;
-        [SerializeField] private float skillCoolDown = 1f;
         
         
+        public Action skillReset;
         
         private bool canFire = true;
-        private bool canUseSkill = true;
+        
         private bool animCheck = false;
         private float _movementSpeed;
 
@@ -39,6 +39,7 @@ namespace SW.Anim
         private void Start()
         {
             GetComponent<PlayerCombat>().basicAnimAction += AttackAnimation;
+            GetComponent<PlayerCombat>().skill2AnimAction+= Skill2Animation;
         }
 
         
@@ -77,33 +78,24 @@ namespace SW.Anim
 
             canFire = true;
         }
-        IEnumerator SkillCooldown()
-        {
-            yield return new WaitForSeconds(skillCoolDown);
-
-            canUseSkill = true;
-        }
+        
         public void AttackAnimation()
         {
-            if(canFire)
-            {
-                _anim.SetTrigger("attack");
-                canFire = false;
-                StartCoroutine(ReloadArrow());
-                
-            }
+            _anim.SetTrigger("attack");
         }
 
         
 
         public void SkillAnimation()
         {
-            if(canUseSkill)
-            {
-                _anim.SetTrigger("skill1");
-                canUseSkill = false;
-                StartCoroutine(SkillCooldown());
-            }
+            
+            _anim.SetTrigger("skill1");
+            
+        }
+
+        public void Skill2Animation()
+        {
+            _anim.SetTrigger("skill2");
         }
 
         private void DeathAnimation()

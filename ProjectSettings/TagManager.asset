@@ -8,6 +8,7 @@ TagManager:
   - Spike
   - Trap
   - Objects
+  - EnemyPool
   layers:
   - Default
   - TransparentFX

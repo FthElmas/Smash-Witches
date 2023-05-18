@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using SW.Core;
+using SW.Control;
 
 
 
@@ -24,7 +25,7 @@ namespace SW.Combat
         move = GetComponent<MoveAction>();
         action = GetComponent<PlayerScheduler>();
         targetHealth = GetComponent<Health>();
-        
+        GetComponent<AIController>().attackBehaviour += Attack;
     }
     private void Update()
         {

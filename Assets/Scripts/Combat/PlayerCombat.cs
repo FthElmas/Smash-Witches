@@ -20,19 +20,22 @@ namespace SW.Combat
 
     private float timer = Mathf.Infinity;
     
-
+    private float reloadTime = 2f;
     [SerializeField] private Button basicAttack;
     [SerializeField] private Button skill1;
     [SerializeField] private Button skill2;
     PlayerAnimation anim;
     public float fireRate = 0.1f;
-
+    private bool canFire = true;
     private float nextFireTime = 0.0f;
     [SerializeField] private float firePower;
     private PlayerController control;
     
     public event Action<float> basicAttackAction;
     public event Action basicAnimAction;
+    public event Action skill2AnimAction;
+    private bool canUseSkill = true;
+    [SerializeField] private float skillCoolDown = 1f;
     void Awake()
     {
         anim = GetComponent<PlayerAnimation>();
@@ -48,7 +51,19 @@ namespace SW.Combat
         control = GetComponent<PlayerController>();
     }
     
+    IEnumerator ReloadAttack()
+    {
+        yield return new WaitForSeconds(reloadTime);
 
+
+        canFire = true;
+    }
+    IEnumerator SkillCooldown()
+    {
+            yield return new WaitForSeconds(skillCoolDown);
+
+            canUseSkill = true;
+    }
     void Update()
     {
         timer += Time.deltaTime;
@@ -62,9 +77,13 @@ namespace SW.Combat
     }
     void BasicAttack()
     {
-        
-        basicAnimAction?.Invoke();
-        weapon.Fire(firePower);
+        if(canFire)
+        {
+            basicAnimAction?.Invoke();
+            basicAttackAction?.Invoke(firePower);
+            canFire = false;
+            StartCoroutine(ReloadAttack());
+        }
     }
 
     public void Shoot()
@@ -75,7 +94,11 @@ namespace SW.Combat
 
     void Skill2()
     {
-        control.SpeedCoroutine();
+        if(canUseSkill)
+        {
+            control.SpeedCoroutine();
+            skill2AnimAction?.Invoke();
+        }
     }
 
     

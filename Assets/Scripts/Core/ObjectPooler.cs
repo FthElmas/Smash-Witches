@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using SW.Combat;
 
 
 namespace SW.Core
@@ -9,58 +10,90 @@ namespace SW.Core
 
    
     public class ObjectPooler : MonoBehaviour
-    {
-    public GameObject prefab; // Oluşturulacak prefab objesi
-    public int poolSize; // Havuzdaki prefab sayısı
-    public List<GameObject> pooledObjects; // Havuzda saklanacak prefab listesi
-    public GameObject parentObject; // Havuzdaki prefab'ların parent GameObject'i
+{
+    public GameObject prefab;
+    public int poolSize;
+    public List<GameObject> pooledObjects;
+    public GameObject parentObject;
     NavMeshHit hit;
+    private float prefabSpacing = 3f;
+    Health health;
+    [SerializeField] private float waitingTime;
 
-	[SerializeField] private float waitingTime;
 
-    // İlk çalıştırıldığında havuz oluşturulur
+    
     void Start()
     {
+        
+
         pooledObjects = new List<GameObject>();
         for (int i = 0; i < poolSize; i++)
         {
             GameObject obj = Instantiate(prefab, parentObject.transform);
             obj.SetActive(false);
             pooledObjects.Add(obj);
+            SetRandomPosition(obj);
         }
     }
 
-	void Update()
-	{
+    void Update()
+    {
+        StartCoroutine(Spawner());
+
         
-		StartCoroutine(Spawner());
-	}
+    }
 
-	IEnumerator Spawner()
-	{
-		yield return new WaitForSeconds(waitingTime);
+    IEnumerator Spawner()
+    {
+        yield return new WaitForSeconds(waitingTime);
+        SpawnObject();
+    }
 
-		SpawnObject();
-	}
-
-    // Havuzdaki ilk uygun prefab'ı çağırır ve random pozisyonda spawn eder
     public void SpawnObject()
     {
-        
         for (int i = 0; i < poolSize; i++)
         {
+            if (pooledObjects[i] == null)
+                pooledObjects.Remove(pooledObjects[i]);
 
-            if(pooledObjects[i] == null) return ;
             if (!pooledObjects[i].activeInHierarchy)
             {
+                SetRandomPosition(pooledObjects[i]);
                 pooledObjects[i].SetActive(true);
-                pooledObjects[i].transform.position = new Vector3(Random.Range(-10f, 30f), 0f, Random.Range(-15f, 30f)); // Rastgele pozisyon belirleme
                 return;
-                
             }
 
-            
         }
+    }
+
+    private void SetRandomPosition(GameObject obj)
+    {
+        Vector3 randomPosition = GetRandomPosition();
+        if (!IsValidPosition(randomPosition))
+        {
+            // Eğer rastgele pozisyon uygun değilse tekrar konumlandır
+            randomPosition = GetRandomPosition();
+        }
+        obj.transform.position = randomPosition;
+    }
+
+    private Vector3 GetRandomPosition()
+    {
+        float x = Random.Range(-10f, 35f);
+        float z = Random.Range(-15f, 30f);
+        return new Vector3(x, 0f, z);
+    }
+
+    private bool IsValidPosition(Vector3 position)
+    {
+        foreach (GameObject obj in pooledObjects)
+        {
+            if (obj.activeInHierarchy && Vector3.Distance(obj.transform.position, position) < prefabSpacing)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
     public int SpawnedObjectsNumber()
@@ -68,6 +101,15 @@ namespace SW.Core
         return pooledObjects.Count;
     }
 
+    public bool AreEnemiesDead()
+    {
+        if(SpawnedObjectsNumber() ==0)
+        {
+            return true;
+        }
+        return false;
+    }
+        
     
 }
 }
