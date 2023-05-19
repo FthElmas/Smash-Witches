@@ -11,49 +11,87 @@ namespace SW.Core
 {
     public class GameManager : MonoBehaviour
     {
+        private static GameManager _instance;
         Health health;
         GameObject poolObject;
         GameObject player;
         ObjectPooler enemyPool;
-        [SerializeField]private TMPro.TextMeshProUGUI roundNumberText;
-        private int roundNumber = 1;
+        private int sceneCounter = 1;
+        private bool canLoad =true;
+
+        
+
+        public static GameManager Instance;
+        
+           
+        
+        public int SceneCounter{get{return sceneCounter;} 
+        set{}}
 
         private void Awake()
         {
-            player = GameObject.FindWithTag("Player");
-            health = player.GetComponent<Health>();
-            poolObject = GameObject.FindWithTag("EnemyPool");
-            enemyPool = poolObject.GetComponent<ObjectPooler>();
+            
+            
+ 
+            if (Instance == null) 
+            {
+                Instance = this;
+                DontDestroyOnLoad (gameObject);
+            } 
+            else 
+            {
+                Destroy (gameObject);
+            }
+        
+            
+            
         }
+        
         private void Update()
         {
+            player = GameObject.FindWithTag("Player");
+            health = player.GetComponent<Health>();
             
             if(health.isDead() == true)
             {
                 StartCoroutine(LoadingGameOver());
             }
-
+            
             Round();
+            
             
         }
 
         IEnumerator LoadingGameOver()
         {
+            
             yield return new WaitForSeconds(2f);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
         private void Round()
         {
-            
-            if(enemyPool.AreEnemiesDead())
+            poolObject = GameObject.FindWithTag("EnemyPool");
+            enemyPool = poolObject.GetComponent<ObjectPooler>();
+            if(enemyPool.AreEnemiesDead() && canLoad)
             {
-                roundNumberText.text = roundNumber.ToString();
-                roundNumber++;
                 SceneManager.LoadScene(1);
+                canLoad = false;
+                sceneCounter++;
+                
+                
+            }
+            if(!enemyPool.AreEnemiesDead())
+            {
+                canLoad = true;
             }
             
+            
+            
+            
         }
+
+        
 
     }
 

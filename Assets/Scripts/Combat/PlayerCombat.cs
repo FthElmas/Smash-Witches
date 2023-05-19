@@ -25,9 +25,8 @@ namespace SW.Combat
     [SerializeField] private Button skill1;
     [SerializeField] private Button skill2;
     PlayerAnimation anim;
-    public float fireRate = 0.1f;
     private bool canFire = true;
-    private float nextFireTime = 0.0f;
+    
     [SerializeField] private float firePower;
     private PlayerController control;
     
@@ -35,7 +34,7 @@ namespace SW.Combat
     public event Action basicAnimAction;
     public event Action skill2AnimAction;
     private bool canUseSkill = true;
-    [SerializeField] private float skillCoolDown = 1f;
+    [SerializeField] private float skillCoolDown;
     void Awake()
     {
         anim = GetComponent<PlayerAnimation>();
@@ -58,7 +57,7 @@ namespace SW.Combat
 
         canFire = true;
     }
-    IEnumerator SkillCooldown()
+    IEnumerator SkillCoolDown()
     {
             yield return new WaitForSeconds(skillCoolDown);
 
@@ -72,8 +71,13 @@ namespace SW.Combat
 
     void Skill1()
     {
-        anim.SkillAnimation();
-        weapon.SkillBehaviour(firePower);
+        if(canUseSkill)
+        {
+            anim.SkillAnimation();
+            weapon.SkillBehaviour(firePower);
+            canUseSkill = false;
+            StartCoroutine(SkillCoolDown());
+        }
     }
     void BasicAttack()
     {

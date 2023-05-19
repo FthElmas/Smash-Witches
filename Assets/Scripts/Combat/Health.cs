@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using SW.Core;
+using SW.UI;
 
 
 
@@ -9,9 +10,11 @@ namespace SW.Combat
 {
     public class Health : MonoBehaviour
     {
-        [SerializeField] private float health = 100f;
-        private float maxHealth = 100f;
+        [SerializeField] private float maxHealth = 100f;
+        private float currentHealth;
         PlayerScheduler scheduler;
+        [SerializeField] private HealthBarUI healthBar;
+        
 
         private void Awake()
         {
@@ -19,14 +22,20 @@ namespace SW.Combat
             
             
         }
+        private void Start()
+        {
+            currentHealth = maxHealth;
+            healthBar.SetMaxHealth(maxHealth);
+        }
         public void DamageIntake(float damage)
         {
-            health = Mathf.Max(health - damage, 0);
+            currentHealth = Mathf.Max(currentHealth - damage, 0);
+            healthBar.HealthBar(currentHealth);
         }
 
         public bool isDead()
         {
-            return health == 0;
+            return currentHealth == 0;
         }
 
         public bool isStopFighting()
@@ -39,10 +48,11 @@ namespace SW.Combat
             return false;
         }
 
-        public float HealthPercentage()
+        public float GetHealthPercentage()
         {
-            return health / maxHealth;
+            return currentHealth / maxHealth;
         }
+        
     }
 
 }

@@ -39,8 +39,7 @@ namespace SW.Core
     void Update()
     {
         StartCoroutine(Spawner());
-
-        
+        RemoveObject();
     }
 
     IEnumerator Spawner()
@@ -54,8 +53,10 @@ namespace SW.Core
         for (int i = 0; i < poolSize; i++)
         {
             if (pooledObjects[i] == null)
-                pooledObjects.Remove(pooledObjects[i]);
-
+            {
+                return;
+            }
+            
             if (!pooledObjects[i].activeInHierarchy)
             {
                 SetRandomPosition(pooledObjects[i]);
@@ -63,6 +64,21 @@ namespace SW.Core
                 return;
             }
 
+        }
+    }
+
+    public void RemoveObject()
+    {
+        for(int i = 0; i <= poolSize;i++)
+        {
+            if(pooledObjects[i] == null)
+            {
+                pooledObjects.Remove(pooledObjects[i]);
+            }
+            if(pooledObjects[i] != null)
+            {
+                return;
+            }
         }
     }
 

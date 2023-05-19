@@ -36,14 +36,14 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Game\CodeMonkey\HealthSystem\_Readme\Readme_HealthSystem.cs" />
-     <Compile Include="Assets\Game\CodeMonkey\HealthSystem\Scripts\HealthBarUI.cs" />
-     <Compile Include="Assets\Game\CodeMonkey\HealthSystem\Scripts\HealthSystem.cs" />
-     <Compile Include="Assets\Game\CodeMonkey\HealthSystem\Scripts\IGetHealthSystem.cs" />
-     <Compile Include="Assets\Game\CodeMonkey\HealthSystem\Scripts\LookAtCamera.cs" />
-     <Compile Include="Assets\Game\CodeMonkey\HealthSystem\Scripts\HealthSystemComponent.cs" />
-     <None Include="Assets\Game\CodeMonkey\HealthSystem\README.txt" />
-     <None Include="Assets\Game\CodeMonkey\HealthSystem\CodeMonkey_HealthSystem.asmdef" />
+     <Compile Include="Assets\Asset Packs\CodeMonkey\HealthSystem\_Readme\Readme_HealthSystem.cs" />
+     <Compile Include="Assets\Asset Packs\CodeMonkey\HealthSystem\Scripts\HealthBarUI.cs" />
+     <Compile Include="Assets\Asset Packs\CodeMonkey\HealthSystem\Scripts\HealthSystem.cs" />
+     <Compile Include="Assets\Asset Packs\CodeMonkey\HealthSystem\Scripts\IGetHealthSystem.cs" />
+     <Compile Include="Assets\Asset Packs\CodeMonkey\HealthSystem\Scripts\LookAtCamera.cs" />
+     <Compile Include="Assets\Asset Packs\CodeMonkey\HealthSystem\Scripts\HealthSystemComponent.cs" />
+     <None Include="Assets\Asset Packs\CodeMonkey\HealthSystem\README.txt" />
+     <None Include="Assets\Asset Packs\CodeMonkey\HealthSystem\CodeMonkey_HealthSystem.asmdef" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.20f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>

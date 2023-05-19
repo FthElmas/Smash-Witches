@@ -9,6 +9,7 @@ TagManager:
   - Trap
   - Objects
   - EnemyPool
+  - RoundNumber
   layers:
   - Default
   - TransparentFX

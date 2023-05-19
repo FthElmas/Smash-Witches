@@ -9,12 +9,8 @@ namespace SW.Combat
 {
     public class Weapon : MonoBehaviour
     {
-    [SerializeField] private float reloadTime = 2f;
-    [SerializeField] private float skillCoolDown = 1f;
-
+    
     [SerializeField]private Projectile arrowPrefab;
-    
-    
     [SerializeField]private Transform spawnPoint;
     
     
@@ -28,8 +24,6 @@ namespace SW.Combat
     public float spawnDelay = 0.2f;
     
     GameObject player;
-    private bool canFire = true;
-    private bool canUseSkill = true;
     
     
     void Start()
@@ -42,20 +36,9 @@ namespace SW.Combat
     }
 
 
-    IEnumerator ReloadArrow()
-    {
-        yield return new WaitForSeconds(reloadTime);
+    
 
-
-        canFire = true;
-    }
-
-    IEnumerator SkillCooldown()
-    {
-        yield return new WaitForSeconds(skillCoolDown);
-
-        canUseSkill = true;
-    }
+    
 
     
     public void Fire(float firePower)

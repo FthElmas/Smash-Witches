@@ -339,12 +339,12 @@
 -r:"C:/Users/Fatih/Smash Witches/Library/PackageCache/com.unity.visualscripting@1.8.0/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll"
 -r:"Library/Bee/artifacts/1300b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aE.dag/UnityEngine.UI.ref.dll"
-"Assets/Game/CodeMonkey/HealthSystem/Scripts/HealthBarUI.cs"
-"Assets/Game/CodeMonkey/HealthSystem/Scripts/HealthSystem.cs"
-"Assets/Game/CodeMonkey/HealthSystem/Scripts/HealthSystemComponent.cs"
-"Assets/Game/CodeMonkey/HealthSystem/Scripts/IGetHealthSystem.cs"
-"Assets/Game/CodeMonkey/HealthSystem/Scripts/LookAtCamera.cs"
-"Assets/Game/CodeMonkey/HealthSystem/_Readme/Readme_HealthSystem.cs"
+"Assets/Asset Packs/CodeMonkey/HealthSystem/Scripts/HealthBarUI.cs"
+"Assets/Asset Packs/CodeMonkey/HealthSystem/Scripts/HealthSystem.cs"
+"Assets/Asset Packs/CodeMonkey/HealthSystem/Scripts/HealthSystemComponent.cs"
+"Assets/Asset Packs/CodeMonkey/HealthSystem/Scripts/IGetHealthSystem.cs"
+"Assets/Asset Packs/CodeMonkey/HealthSystem/Scripts/LookAtCamera.cs"
+"Assets/Asset Packs/CodeMonkey/HealthSystem/_Readme/Readme_HealthSystem.cs"
 -langversion:9.0
 
 /deterministic

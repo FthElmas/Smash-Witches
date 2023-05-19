@@ -12,16 +12,14 @@ namespace SW.Anim
         Animator _anim;
         Rigidbody rigidb;
         NavMeshAgent navMesh;
-        FloatingJoystick fJoy;
         Health healthComponent;
-        [SerializeField] private Button basicAttack;
-        Health target;
-        [SerializeField] private float reloadTime = 2f;
+        
+       
         
         
-        public Action skillReset;
         
-        private bool canFire = true;
+        
+        
         
         private bool animCheck = false;
         private float _movementSpeed;
@@ -60,7 +58,7 @@ namespace SW.Anim
         var localVelocity = Quaternion.Inverse(transform.rotation) * (rigidb.velocity / _movementSpeed);
 
        
-        _anim.SetFloat("Y", localVelocity.y, 1, Time.deltaTime * 10);
+
         
         
         _anim.SetFloat("Z", Mathf.Clamp(localVelocity.z, 0, 2), 0.1f, Time.deltaTime * 100);
@@ -71,13 +69,6 @@ namespace SW.Anim
         
         }
 
-        IEnumerator ReloadArrow()
-        {
-            yield return new WaitForSeconds(reloadTime);
-
-
-            canFire = true;
-        }
         
         public void AttackAnimation()
         {
