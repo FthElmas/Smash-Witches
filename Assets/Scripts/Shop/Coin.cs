@@ -20,31 +20,35 @@ namespace SW.Shop
             }
         }
 
-        public int coin{get; set;}
+        public int currentCoin;
         [SerializeField] Text[] allCoinsUIText;
         public void AddCoinDrop(int coin)
         {
-            this.coin += coin;
+            this.currentCoin += coin;
 
         }
 
         public void DecreaseCoin(int price)
         {
-            this.coin -= price;
+            this.currentCoin -= price;
         }
 
         public bool HasEnoughCoins(int price)
         {
-            return (coin >= price);
+            return (currentCoin >= price);
         }
 
         public void UpdateAllCoinsUIText ()
-	{
-		for (int i = 0; i < allCoinsUIText.Length; i++) {
-			allCoinsUIText [i].text = coin.ToString ();
-		}
-	}
+	    {
+            for (int i = 0; i < allCoinsUIText.Length; i++) {
+                allCoinsUIText [i].text = currentCoin.ToString ();
+            }
+	    }
 
+        public int GetCurrentCoin()
+        {
+            return currentCoin;
+        }
         
 
 

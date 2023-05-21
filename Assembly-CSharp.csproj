@@ -51,6 +51,7 @@
      <Compile Include="Assets\Asset Packs\PowerUp\Scripts\PowerUpManager.cs" />
      <Compile Include="Assets\Asset Packs\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
      <Compile Include="Assets\Asset Packs\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
+     <Compile Include="Assets\Scripts\UI\Billboard.cs" />
      <Compile Include="Assets\Scripts\UI\HealthBarUI.cs" />
      <Compile Include="Assets\Scripts\Core\MoveAction.cs" />
      <Compile Include="Assets\Asset Packs\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
@@ -75,6 +76,7 @@
      <Compile Include="Assets\Asset Packs\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
      <Compile Include="Assets\Scripts\Shop\Coin.cs" />
      <Compile Include="Assets\Asset Packs\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
+     <Compile Include="Assets\Scripts\UI\CoinUI.cs" />
      <Compile Include="Assets\Scripts\Controllers\PlayerController.cs" />
      <Compile Include="Assets\Scripts\UI\RoundUpdate.cs" />
      <Compile Include="Assets\Asset Packs\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
@@ -106,7 +108,11 @@
      <Compile Include="Assets\Asset Packs\PowerUp\Scripts\ScaleParticles.cs" />
      <Compile Include="Assets\Asset Packs\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\Scripts\Core\PersistentObjectSpawner.cs" />
-     <Compile Include="Assets\Scripts\UI\Billboard.cs" />
+     <Compile Include="Assets\Scripts\Core\SceneOrderSingleton.cs" />
+     <Compile Include="Assets\Scripts\Core\MenuManager.cs" />
+     <Compile Include="Assets\Scripts\Core\StatHolderSingleton.cs" />
+     <Compile Include="Assets\Scripts\Core\EnemyStatHolder.cs" />
+     <Compile Include="Assets\Scripts\Core\IStatIncrease.cs" />
      <None Include="Assets\Asset Packs\Asset Packs\Synty - Polygon Student Sample\README - Usage Rights for these assets.txt" />
      <None Include="Assets\Asset Packs\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\Asset Packs\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />

@@ -11,53 +11,47 @@ namespace SW.Core
 {
     public class GameManager : MonoBehaviour
     {
-        private static GameManager _instance;
+        
         Health health;
         GameObject poolObject;
         GameObject player;
         ObjectPooler enemyPool;
-        private int sceneCounter = 1;
+        private int sceneCounter;
         private bool canLoad =true;
+        SceneOrderSingleton counter;
 
         
-
-        public static GameManager Instance;
         
            
         
-        public int SceneCounter{get{return sceneCounter;} 
-        set{}}
+       
 
         private void Awake()
         {
-            
-            
- 
-            if (Instance == null) 
-            {
-                Instance = this;
-                DontDestroyOnLoad (gameObject);
-            } 
-            else 
-            {
-                Destroy (gameObject);
-            }
-        
+            counter = SceneOrderSingleton.FindAnyObjectByType<SceneOrderSingleton>();
+            poolObject = GameObject.FindWithTag("EnemyPool");
+            enemyPool = poolObject.GetComponent<ObjectPooler>();
+            player = GameObject.FindWithTag("Player");
+            health = player.GetComponent<Health>();
             
             
         }
         
+        private void Start()
+        {
+            
+        }
         private void Update()
         {
-            player = GameObject.FindWithTag("Player");
-            health = player.GetComponent<Health>();
-            
-            if(health.isDead() == true)
+ 
+            Round();
+
+            if(health != null && health.isDead() == true)
             {
                 StartCoroutine(LoadingGameOver());
+                
             }
             
-            Round();
             
             
         }
@@ -65,26 +59,31 @@ namespace SW.Core
         IEnumerator LoadingGameOver()
         {
             
-            yield return new WaitForSeconds(2f);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            yield return new WaitForSeconds(5f);
+            SceneManager.LoadScene(2);
+            
         }
 
         private void Round()
         {
-            poolObject = GameObject.FindWithTag("EnemyPool");
-            enemyPool = poolObject.GetComponent<ObjectPooler>();
+            
+            
             if(enemyPool.AreEnemiesDead() && canLoad)
             {
+                counter.IncreaseCounter();
                 SceneManager.LoadScene(1);
                 canLoad = false;
-                sceneCounter++;
                 
                 
             }
+            
             if(!enemyPool.AreEnemiesDead())
             {
                 canLoad = true;
             }
+            if(SceneManager.GetActiveScene().buildIndex + 1 == 3) return;
+
+            
             
             
             

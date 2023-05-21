@@ -16,7 +16,7 @@ namespace SW.UI
         private void Start()
         {
             gameManager = FindObjectOfType<GameManager>();
-            roundNumber = GameManager.Instance.SceneCounter;
+            roundNumber = SceneOrderSingleton.Instance.SceneCounter;
             roundNumberText = TMPro.TextMeshProUGUI.FindObjectOfType<TMPro.TextMeshProUGUI>();
             
         }
@@ -29,7 +29,7 @@ namespace SW.UI
         public void UpdateText()
         {
             roundNumberText.text = roundNumber.ToString();
-            print(roundNumber.ToString());
+            
         }
     }
 

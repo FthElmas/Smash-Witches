@@ -69,11 +69,12 @@ namespace SW.Core
 
     public void RemoveObject()
     {
-        for(int i = 0; i <= poolSize;i++)
+        for(int i = 0; i < poolSize;i++)
         {
             if(pooledObjects[i] == null)
             {
                 pooledObjects.Remove(pooledObjects[i]);
+                poolSize = 0;
             }
             if(pooledObjects[i] != null)
             {

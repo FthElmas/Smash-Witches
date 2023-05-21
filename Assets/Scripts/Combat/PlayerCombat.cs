@@ -90,10 +90,6 @@ namespace SW.Combat
         }
     }
 
-    public void Shoot()
-    {
-        
-    }
 
 
     void Skill2()

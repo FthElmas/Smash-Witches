@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using SW.Combat;
-using System;
+using SW.Shop;
 
 
 namespace SW.Control
@@ -15,6 +16,8 @@ namespace SW.Control
         GameObject player;
         Health target;
         Attacker  fighter;
+        Coin _coin;
+        
         
         
         
@@ -27,6 +30,11 @@ namespace SW.Control
             target = GetComponent<Health>();
         }
 
+        private void Start()
+        {
+            _coin = Coin.FindAnyObjectByType<Coin>();
+        }
+
         private void Update()
         {
             StartCoroutine(DestroyObjectAfterDeath());
@@ -37,6 +45,7 @@ namespace SW.Control
                 AttackBehaviour();
             }
 
+            
             
         }
 
@@ -65,9 +74,17 @@ namespace SW.Control
             
             if(target.isStopFighting())
             {
+                DropCoin();
                 yield return new WaitForSeconds(deathTime);
                 Destroy(gameObject);
             }
+        }
+
+        private void DropCoin()
+        {
+            int drop = UnityEngine.Random.Range(5,15);
+            _coin.AddCoinDrop(drop);
+            
         }
     }
 
