@@ -60,6 +60,11 @@ public class Projectile : MonoBehaviour
 
     }
 
+    public void IncreaseWeaponDamage(float damage)
+    {
+        this.damage += damage;
+    }
+
     }
 
 }

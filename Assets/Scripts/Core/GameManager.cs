@@ -44,7 +44,7 @@ namespace SW.Core
         private void Update()
         {
  
-            Round();
+            
 
             if(health != null && health.isDead() == true)
             {
@@ -64,7 +64,7 @@ namespace SW.Core
             
         }
 
-        private void Round()
+        public void Round()
         {
             
             

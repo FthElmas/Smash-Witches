@@ -22,6 +22,12 @@ namespace SW.Shop
 
         public int currentCoin;
         [SerializeField] Text[] allCoinsUIText;
+
+
+        private void Start()
+        {
+            UpdateAllCoinsUIText();
+        }
         public void AddCoinDrop(int coin)
         {
             this.currentCoin += coin;

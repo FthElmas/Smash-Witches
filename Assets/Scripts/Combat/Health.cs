@@ -52,6 +52,11 @@ namespace SW.Combat
         {
             return currentHealth / maxHealth;
         }
+
+        public void IncreaseMaxHealth(float health)
+        {
+            this.maxHealth += health;
+        }
         
     }
 
