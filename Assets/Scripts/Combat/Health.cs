@@ -8,12 +8,13 @@ using SW.UI;
 
 namespace SW.Combat
 {
-    public class Health : MonoBehaviour
+    public class Health : MonoBehaviour, IHealth
     {
-        [SerializeField] private float maxHealth = 100f;
+        private float maxHealth;
         private float currentHealth;
         PlayerScheduler scheduler;
         [SerializeField] private HealthBarUI healthBar;
+        private int currentPot;
         
 
         private void Awake()
@@ -24,8 +25,10 @@ namespace SW.Combat
         }
         private void Start()
         {
+            currentPot = StatHolderSingleton.Instance.StatData.HealthPotNumber;
+            maxHealth = StatHolderSingleton.Instance.StatData.MaxHealth;
             currentHealth = maxHealth;
-            healthBar.SetMaxHealth(maxHealth);
+            healthBar.SetMaxHealth(currentHealth);
         }
         public void DamageIntake(float damage)
         {
@@ -48,15 +51,17 @@ namespace SW.Combat
             return false;
         }
 
-        public float GetHealthPercentage()
+
+        public void HealthPot(float health)
         {
-            return currentHealth / maxHealth;
+            if(currentPot > 0)
+            {
+                this.currentHealth +=health;
+                currentPot--;
+            }
         }
 
-        public void IncreaseMaxHealth(float health)
-        {
-            this.maxHealth += health;
-        }
+       
         
     }
 

@@ -26,7 +26,7 @@ namespace SW.Shop
 
         private void Start()
         {
-            UpdateAllCoinsUIText();
+            
         }
         public void AddCoinDrop(int coin)
         {
@@ -54,6 +54,11 @@ namespace SW.Shop
         public int GetCurrentCoin()
         {
             return currentCoin;
+        }
+
+        public void ResetCoin()
+        {
+            currentCoin = 0;
         }
         
 

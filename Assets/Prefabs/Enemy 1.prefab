@@ -633,13 +633,13 @@ GameObject:
   - component: {fileID: 4700387274800078231}
   - component: {fileID: 4700387274800078230}
   - component: {fileID: 4700387274800078313}
-  - component: {fileID: 4700387274800078312}
   - component: {fileID: 4700387274800078315}
   - component: {fileID: 4700387274800078317}
   - component: {fileID: 4700387274800078316}
   - component: {fileID: 4700387274800078319}
   - component: {fileID: 4700387274800078318}
   - component: {fileID: 5679665084482199145}
+  - component: {fileID: 4310761193643733821}
   m_Layer: 0
   m_Name: Enemy 1
   m_TagString: Enemy
@@ -716,20 +716,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &4700387274800078312
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4700387274800078305}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c06bac7ec8c1f047b4f9dd65d8226a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 10
-  healthBar: {fileID: 6505651726909364976}
 --- !u!114 &4700387274800078315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -803,7 +789,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponRange: 1
-  weaponDamage: 5
 --- !u!114 &5679665084482199145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -818,6 +803,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chaseDistance: 100
   deathTime: 5
+--- !u!114 &4310761193643733821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4700387274800078305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c418280b6d83f8d488eaa0b093b191aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 6505651726909364976}
 --- !u!1 &4700387274849790175
 GameObject:
   m_ObjectHideFlags: 0

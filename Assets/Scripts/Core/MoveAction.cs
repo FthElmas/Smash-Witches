@@ -13,12 +13,13 @@ namespace SW.Core
     NavMeshAgent navMeshAgent;
     
     NavMeshHit closestHit;
-    Health health;
+    EnemyHealth health;
     Collider collide;
+    private float speed;
 
     private void Awake()
     {   
-        health = GetComponent<Health>();
+        health = GetComponent<EnemyHealth>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         collide = GetComponent<Collider>();
         
@@ -28,7 +29,7 @@ namespace SW.Core
 
     private void Start()
     {
-        
+        speed = EnemyStatHolder.Instance.EnemyStat.Speed;
     }
 
     private void Update()
@@ -48,6 +49,7 @@ namespace SW.Core
         {
             navMeshAgent.destination = destination;
             navMeshAgent.isStopped = false;
+            navMeshAgent.speed = speed;
         }
 
     public void Cancel()
@@ -69,6 +71,8 @@ namespace SW.Core
     {
         navMeshAgent.enabled = true;
     }
+
+    
     }
 
 

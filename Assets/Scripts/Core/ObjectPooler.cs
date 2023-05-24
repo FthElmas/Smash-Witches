@@ -24,7 +24,7 @@ namespace SW.Core
     
     void Start()
     {
-        
+        poolSize = EnemyStatHolder.Instance.EnemyStat.EnemyNumber;
 
         pooledObjects = new List<GameObject>();
         for (int i = 0; i < poolSize; i++)
@@ -74,7 +74,7 @@ namespace SW.Core
             if(pooledObjects[i] == null)
             {
                 pooledObjects.Remove(pooledObjects[i]);
-                poolSize = 0;
+                
             }
             if(pooledObjects[i] != null)
             {

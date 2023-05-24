@@ -6,8 +6,8 @@ namespace SW.Core
 {
     public interface IStatIncrease
     {
-        void IncreaseHealth();
+        void IncreaseHealth(float health);
 
-        void IncreaseDamage();
+        void IncreaseDamage(float damage);
     }
 }

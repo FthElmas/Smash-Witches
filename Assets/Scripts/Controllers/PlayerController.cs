@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using SW.Combat;
+using SW.Core;
 
 namespace SW.Control
 {
     public class PlayerController : MonoBehaviour
     {
-        [SerializeField]private float speed = 10f;
+        private float speed;
         [SerializeField]private float speedTurn;
         [SerializeField] private float updateTime = 10f;
         [SerializeField]private GameObject powerUpPrefab;
@@ -23,9 +24,14 @@ namespace SW.Control
 
         private void Awake()
         {
+            
             rb = GetComponent<Rigidbody>();
             navMesh = GetComponent<NavMeshAgent>();
             player = GameObject.FindWithTag("Player");
+        }
+        private void Start()
+        {
+            speed = StatHolderSingleton.Instance.StatData.Speed;
         }
         
         public IEnumerator UpdateSpeed()

@@ -14,7 +14,7 @@ namespace SW.Control
         [SerializeField] private float deathTime = 2f;
         public Action<GameObject> attackBehaviour;
         GameObject player;
-        Health target;
+        EnemyHealth target;
         Attacker  fighter;
         Coin _coin;
         
@@ -27,7 +27,7 @@ namespace SW.Control
             player = GameObject.FindWithTag("Player");
             fighter = GetComponent<Attacker>();
             
-            target = GetComponent<Health>();
+            target = GetComponent<EnemyHealth>();
         }
 
         private void Start()

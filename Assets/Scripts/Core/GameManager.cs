@@ -19,6 +19,9 @@ namespace SW.Core
         private int sceneCounter;
         private bool canLoad =true;
         SceneOrderSingleton counter;
+        GameObject _ui;
+        GameObject shopUI;
+        GameObject gameUI;
 
         
         
@@ -28,6 +31,7 @@ namespace SW.Core
 
         private void Awake()
         {
+            
             counter = SceneOrderSingleton.FindAnyObjectByType<SceneOrderSingleton>();
             poolObject = GameObject.FindWithTag("EnemyPool");
             enemyPool = poolObject.GetComponent<ObjectPooler>();
@@ -39,12 +43,16 @@ namespace SW.Core
         
         private void Start()
         {
-            
+            _ui = GameObject.FindWithTag("UI");
+            shopUI = _ui.transform.GetChild(1).gameObject;
+            gameUI = _ui.transform.GetChild(0).gameObject;
+
+
         }
         private void Update()
         {
  
-            
+            EnableShopUI();
 
             if(health != null && health.isDead() == true)
             {
@@ -88,6 +96,15 @@ namespace SW.Core
             
             
             
+        }
+
+        public void EnableShopUI()
+        {
+            if(enemyPool.AreEnemiesDead() && canLoad)
+            {
+                gameUI.SetActive(false);
+                shopUI.SetActive(true);
+            }
         }
 
         

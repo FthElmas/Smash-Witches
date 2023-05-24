@@ -16,7 +16,7 @@ namespace SW.Combat
     PlayerScheduler action;
     Health targetHealth;
 
-    [SerializeField]float weaponDamage = 5f ;
+    private float weaponDamage;
     
    
     
@@ -26,6 +26,11 @@ namespace SW.Combat
         action = GetComponent<PlayerScheduler>();
         targetHealth = GetComponent<Health>();
         GetComponent<AIController>().attackBehaviour += Attack;
+    }
+
+    private void Start()
+    {
+        weaponDamage = EnemyStatHolder.Instance.EnemyStat.WeaponDamage;
     }
     private void Update()
         {
@@ -71,8 +76,7 @@ namespace SW.Combat
         // Hit() is called on the exact impact moment to the target by the animator
         public void Hit()
         {   
-            
-            target.DamageIntake(weaponDamage);
+            targetHealth.DamageIntake(weaponDamage);
         }
         public bool isInCombat()
         {   

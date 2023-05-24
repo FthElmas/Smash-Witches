@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -6107024899988442939}
   m_Layer: 0
   m_Name: FX_BulletTrail_Blue
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51,7 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7166138b3d67dc141acc5e6fff76a06b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
   torque: 5
   rigidBody: {fileID: -6746287710312424174}
   explosionPrefab: {fileID: 5012782519002801146, guid: 2dc71af596e84ce458dc29725280b250, type: 3}

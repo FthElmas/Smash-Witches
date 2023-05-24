@@ -13,7 +13,7 @@ namespace SW.Anim
         Rigidbody rigidb;
         NavMeshAgent navMesh;
         FloatingJoystick fJoy;
-        Health healthComponent;
+        EnemyHealth healthComponent;
         
         Health target;
 
@@ -29,7 +29,7 @@ namespace SW.Anim
             _anim = GetComponent<Animator>();
             rigidb = GetComponent<Rigidbody>();
             navMesh = GetComponent<NavMeshAgent>();
-            healthComponent = GetComponent<Health>();
+            healthComponent = GetComponent<EnemyHealth>();
             GetComponent<AIController>().attackBehaviour += Attack;
             
         }

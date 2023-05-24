@@ -8,30 +8,43 @@ namespace SW.Core
 {
     public class StatHolderSingleton : MonoBehaviour, IStatIncrease
     {
-        Health health;
-        GameObject player;
-
-        private static StatHolderSingleton Instance;
+        
+        [SerializeField] private StatsSO statData;
+        
+        public StatsSO StatData{get{return statData;}}
+        public List<StatsSO> shopItemList;
+        
+        private static StatHolderSingleton _instance;
+        public static StatHolderSingleton Instance{get{return _instance;}}
 
         private void Awake()
         {
 
-            if (Instance == null) {
-                Instance = this;
+            if (_instance == null) 
+            {
+                _instance = this;
                 DontDestroyOnLoad (gameObject);
-            } else {
+            } 
+            else 
+            {
                 Destroy (gameObject);
             }
+            
+            
         }
         
-        public void IncreaseDamage()
+        public void IncreaseDamage(float damage)
         {
-
+            StatData.Damage += damage;
         }
 
-        public void IncreaseHealth()
+        public void IncreaseHealth(float health)
         {
-
+            statData.MaxHealth += health;
+        }
+        public void IncreasePot(int pot)
+        {
+            statData.HealthPotNumber += pot;
         }
     }
 }

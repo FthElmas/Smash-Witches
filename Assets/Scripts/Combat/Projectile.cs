@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SW.Core;
 
 
 namespace SW.Combat
 {
 public class Projectile : MonoBehaviour
 {
-    [SerializeField]
+    
     private float damage;
 
     [SerializeField]
@@ -17,7 +18,7 @@ public class Projectile : MonoBehaviour
     private Rigidbody rigidBody;
     [SerializeField]private GameObject explosionPrefab;
     GameObject enemyTag;
-    Health health;
+    EnemyHealth health;
 
     private bool didHit;
     [SerializeField] private float destroyDelay;
@@ -25,6 +26,7 @@ public class Projectile : MonoBehaviour
 
     private void Awake()
     {
+        damage = StatHolderSingleton.Instance.StatData.Damage;
         rigidBody = GetComponent<Rigidbody>();
         enemyTag = GameObject.FindWithTag("Enemy");
         
@@ -46,7 +48,7 @@ public class Projectile : MonoBehaviour
         
         if(collision.gameObject.CompareTag("Enemy"))
         {
-            health = collision.gameObject.GetComponent<Health>();
+            health = collision.gameObject.GetComponent<EnemyHealth>();
             if(health != null)
             {
                 health.DamageIntake(damage);
