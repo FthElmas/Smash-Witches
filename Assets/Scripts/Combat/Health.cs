@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using SW.Core;
 using SW.UI;
+using SW.Interface;
 
 
 
@@ -16,16 +17,20 @@ namespace SW.Combat
         [SerializeField] private HealthBarUI healthBar;
         private int currentPot;
         
+        
 
         private void Awake()
         {
             scheduler = GetComponent<PlayerScheduler>();
-            
-            
+
+        }
+        private void Update()
+        {
+            currentPot = StatHolderSingleton.Instance.GetCurrentPot();
         }
         private void Start()
         {
-            currentPot = StatHolderSingleton.Instance.StatData.HealthPotNumber;
+            
             maxHealth = StatHolderSingleton.Instance.StatData.MaxHealth;
             currentHealth = maxHealth;
             healthBar.SetMaxHealth(currentHealth);
@@ -54,10 +59,11 @@ namespace SW.Combat
 
         public void HealthPot(float health)
         {
+            
             if(currentPot > 0)
             {
-                this.currentHealth +=health;
-                currentPot--;
+                this.currentHealth = Mathf.Min(currentHealth + health, 100);
+                StatHolderSingleton.Instance.DecreasePot(1);
             }
         }
 

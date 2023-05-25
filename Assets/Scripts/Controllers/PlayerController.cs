@@ -11,7 +11,8 @@ namespace SW.Control
     {
         private float speed;
         [SerializeField]private float speedTurn;
-        [SerializeField] private float updateTime = 10f;
+        private float buffTime;
+        private float skill2SpeedBuff;
         [SerializeField]private GameObject powerUpPrefab;
         PlayerController control;
         GameObject player;
@@ -31,16 +32,18 @@ namespace SW.Control
         }
         private void Start()
         {
+            skill2SpeedBuff = StatHolderSingleton.Instance.StatData.Skill2SpeedBuff;
+            buffTime = StatHolderSingleton.Instance.StatData.SpeedBuffTime;
             speed = StatHolderSingleton.Instance.StatData.Speed;
         }
         
         public IEnumerator UpdateSpeed()
         {
-            speed = 6f;
+            speed = skill2SpeedBuff;
 
-            yield return new WaitForSeconds(updateTime);
+            yield return new WaitForSeconds(buffTime);
 
-            speed = 3f;
+            speed = StatHolderSingleton.Instance.StatData.Speed;
         }
 
         public void SpeedCoroutine()
@@ -49,7 +52,7 @@ namespace SW.Control
 
             GameObject particle = Instantiate(powerUpPrefab, player.transform.position, player.transform.rotation, player.transform);
 
-            Destroy(particle, 10f);
+            Destroy(particle, buffTime);
             
         }
 

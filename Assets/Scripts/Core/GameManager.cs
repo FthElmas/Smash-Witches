@@ -32,7 +32,7 @@ namespace SW.Core
         private void Awake()
         {
             
-            counter = SceneOrderSingleton.FindAnyObjectByType<SceneOrderSingleton>();
+            counter = SceneOrderSingleton.Instance;
             poolObject = GameObject.FindWithTag("EnemyPool");
             enemyPool = poolObject.GetComponent<ObjectPooler>();
             player = GameObject.FindWithTag("Player");

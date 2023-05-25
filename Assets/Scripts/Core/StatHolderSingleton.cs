@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using SW.Combat;
+using SW.Interface;
 
 
 namespace SW.Core
@@ -45,6 +46,18 @@ namespace SW.Core
         public void IncreasePot(int pot)
         {
             statData.HealthPotNumber += pot;
+        }
+        public void DecreasePot(int pot)
+        {
+            statData.HealthPotNumber -= pot;
+        }
+        public int GetCurrentPot()
+        {
+            return statData.HealthPotNumber;
+        }
+        public void ResetCurrentPot()
+        {
+            statData.HealthPotNumber = 1;
         }
     }
 }

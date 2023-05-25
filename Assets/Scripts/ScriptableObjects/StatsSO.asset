@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40aa117c4d97b8141882eb7cf8bff278, type: 3}
   m_Name: StatsSO
   m_EditorClassIdentifier: 
-  Damage: 20
+  Damage: 10
   MaxHealth: 100
   Speed: 3
-  HealthPotNumber: 5
+  SpeedBuffTime: 10
+  Skill2SpeedBuff: 6
+  HealthPotNumber: 4
+  Skill1Cooldown: 5
+  Skill2Cooldown: 10
+  BasicAttackCooldown: 1

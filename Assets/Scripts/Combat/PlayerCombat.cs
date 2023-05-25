@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using SW.Anim;
 using SW.Control;
 using System;
+using SW.Core;
 
 namespace SW.Combat
 {
@@ -20,12 +21,12 @@ namespace SW.Combat
 
     private float timer = Mathf.Infinity;
     
-    private float reloadTime = 2f;
+    
     [SerializeField] private Button basicAttack;
     [SerializeField] private Button skill1;
     [SerializeField] private Button skill2;
     PlayerAnimation anim;
-    private bool canFire = true;
+    private bool canUseBasicAttack = true;
     
     [SerializeField] private float firePower;
     private PlayerController control;
@@ -33,8 +34,11 @@ namespace SW.Combat
     public event Action<float> basicAttackAction;
     public event Action basicAnimAction;
     public event Action skill2AnimAction;
-    private bool canUseSkill = true;
-    [SerializeField] private float skillCoolDown;
+    private bool canUseSkill1 = true;
+    private bool canUseSkill2 = true;
+    private float basicAttackCooldown;
+    private float skill1CoolDown;
+    private float skill2CoolDown;
     void Awake()
     {
         anim = GetComponent<PlayerAnimation>();
@@ -50,18 +54,30 @@ namespace SW.Combat
         control = GetComponent<PlayerController>();
     }
     
+    private void Start()
+    {
+        basicAttackCooldown = StatHolderSingleton.Instance.StatData.BasicAttackCooldown;
+        skill1CoolDown = StatHolderSingleton.Instance.StatData.Skill1Cooldown;
+        skill2CoolDown = StatHolderSingleton.Instance.StatData.Skill2Cooldown;
+    }
     IEnumerator ReloadAttack()
     {
-        yield return new WaitForSeconds(reloadTime);
+        yield return new WaitForSeconds(basicAttackCooldown);
 
 
-        canFire = true;
+        canUseBasicAttack = true;
     }
-    IEnumerator SkillCoolDown()
+    IEnumerator Skill1CoolDown()
     {
-            yield return new WaitForSeconds(skillCoolDown);
+            yield return new WaitForSeconds(skill1CoolDown);
 
-            canUseSkill = true;
+            canUseSkill1 = true;
+    }
+    IEnumerator Skill2CoolDown()
+    {
+            yield return new WaitForSeconds(skill2CoolDown);
+
+            canUseSkill2 = true;
     }
     void Update()
     {
@@ -71,21 +87,21 @@ namespace SW.Combat
 
     void Skill1()
     {
-        if(canUseSkill)
+        if(canUseSkill1)
         {
             anim.SkillAnimation();
             weapon.SkillBehaviour(firePower);
-            canUseSkill = false;
-            StartCoroutine(SkillCoolDown());
+            canUseSkill1 = false;
+            StartCoroutine(Skill1CoolDown());
         }
     }
     void BasicAttack()
     {
-        if(canFire)
+        if(canUseBasicAttack)
         {
             basicAnimAction?.Invoke();
             basicAttackAction?.Invoke(firePower);
-            canFire = false;
+            canUseBasicAttack = false;
             StartCoroutine(ReloadAttack());
         }
     }
@@ -94,11 +110,27 @@ namespace SW.Combat
 
     void Skill2()
     {
-        if(canUseSkill)
+        if(canUseSkill2)
         {
             control.SpeedCoroutine();
             skill2AnimAction?.Invoke();
+            canUseSkill2 = false;
+            StartCoroutine(Skill2CoolDown());
         }
+    }
+
+
+    public bool GetSkill1()
+    {
+        return canUseSkill1;
+    }
+    public bool GetSkill2()
+    {
+        return canUseSkill2;
+    }
+    public bool GetBasicAttack()
+    {
+        return canUseBasicAttack;
     }
 
     

@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using SW.Core;
+using SW.Interface;
 using SW.Control;
+using SW.Core;
 
 
 
 namespace SW.Combat
 {
-    public class Attacker : MonoBehaviour, IAction
+    public class Attacker : MonoBehaviour, IAction, IAttack
     {
     [SerializeField] private float weaponRange = 2f;
     Health target;

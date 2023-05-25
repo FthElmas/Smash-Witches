@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using SW.UI;
 using SW.Core;
+using SW.Interface;
 
 namespace SW.Combat
 {

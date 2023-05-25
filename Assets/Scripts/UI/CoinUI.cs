@@ -13,16 +13,14 @@ namespace SW.UI
         private Coin coinComponent;
         private int currentCoin;
 
-        private void Awake()
+        
+        public void Start()
         {
             currentCoinText = GetComponent<Text>();
-        }
-        private void Start()
-        {
-            coinComponent = Coin.FindAnyObjectByType<Coin>();
+            coinComponent = Coin.Instance;
         }
 
-        private void Update()
+        public void Update()
         {
             UpdateCoinUI();
         }
